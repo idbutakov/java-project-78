@@ -4,6 +4,7 @@ public class StringSchema {
     private boolean isRequired = false;
     private Integer minLength = null;
     private String containsSubstring = null;
+
     public StringSchema required() {
         isRequired = true;
         return this;
