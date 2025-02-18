@@ -1,16 +1,10 @@
 package hexlet.code.schemas;
 
-public class NumberSchema {
-    private boolean isRequired = false;
+public class NumberSchema extends BaseSchema<Integer> {
     private boolean isPositive = false;
     private boolean hasRange = false;
     private Integer start = 0;
     private Integer end = 0;
-
-    public NumberSchema required() {
-        isRequired = true;
-        return this;
-    }
 
     public NumberSchema positive() {
         isPositive = true;
@@ -24,31 +18,20 @@ public class NumberSchema {
         return this;
     }
 
-    public boolean isValid(Object value) {
-        if (value == null) {
-            return !isRequired;
-        }
+    @Override
+    protected Class<Integer> getType() {
+        return Integer.class;
+    }
 
-        if (!(value instanceof Integer number)) {
+    @Override
+    protected boolean validate(Integer number) {
+        if (isPositive && number <= 0) {
             return false;
-        }
-
-        if (!isRequired && number.equals(null)) {
-            return true;
-        }
-
-        if (isRequired && number.equals(null)) {
-            return false;
-        }
-
-        if (number <= 0) {
-            return !isPositive;
         }
 
         if (hasRange && (number < start || number > end)) {
             return false;
         }
-
         return true;
     }
 }
