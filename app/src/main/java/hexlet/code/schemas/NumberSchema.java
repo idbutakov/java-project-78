@@ -6,6 +6,12 @@ public class NumberSchema extends BaseSchema<Integer> {
     private Integer start = 0;
     private Integer end = 0;
 
+    @Override
+    public NumberSchema required() {
+        super.required();
+        return this;
+    }
+
     public NumberSchema positive() {
         isPositive = true;
         return this;

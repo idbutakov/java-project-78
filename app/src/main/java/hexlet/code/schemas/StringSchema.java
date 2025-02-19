@@ -4,6 +4,12 @@ public class StringSchema extends BaseSchema<String> {
     private Integer minLength = null;
     private String containsSubstring = null;
 
+    @Override
+    public StringSchema required() {
+        super.required();
+        return this;
+    }
+
     public StringSchema minLength(int length) {
         this.minLength = length;
         return this;
