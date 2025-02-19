@@ -5,28 +5,28 @@ public class StringSchema extends BaseSchema<String> {
     private String containsSubstring = null;
 
     @Override
-    public StringSchema required() {
+    public final StringSchema required() {
         super.required();
         return this;
     }
 
-    public StringSchema minLength(int length) {
+    public final StringSchema minLength(int length) {
         this.minLength = length;
         return this;
     }
 
-    public StringSchema contains(String substring) {
+    public final StringSchema contains(String substring) {
         this.containsSubstring = substring;
         return this;
     }
 
     @Override
-    protected Class<String> getType() {
+    protected final Class<String> getType() {
         return String.class;
     }
 
     @Override
-    protected boolean validate(String str) {
+    protected final boolean validate(String str) {
         if (!isRequired && str.isEmpty()) {
             return true;
         }

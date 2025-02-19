@@ -7,17 +7,17 @@ public class NumberSchema extends BaseSchema<Integer> {
     private Integer end = 0;
 
     @Override
-    public NumberSchema required() {
+    public final NumberSchema required() {
         super.required();
         return this;
     }
 
-    public NumberSchema positive() {
+    public final NumberSchema positive() {
         isPositive = true;
         return this;
     }
 
-    public NumberSchema range(int a, int b) {
+    public final NumberSchema range(int a, int b) {
         this.start = a;
         this.end = b;
         hasRange = true;
@@ -25,12 +25,12 @@ public class NumberSchema extends BaseSchema<Integer> {
     }
 
     @Override
-    protected Class<Integer> getType() {
+    protected final Class<Integer> getType() {
         return Integer.class;
     }
 
     @Override
-    protected boolean validate(Integer number) {
+    protected final boolean validate(Integer number) {
         if (isPositive && number <= 0) {
             return false;
         }

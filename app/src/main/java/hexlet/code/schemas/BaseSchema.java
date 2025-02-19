@@ -3,12 +3,20 @@ package hexlet.code.schemas;
 public abstract class BaseSchema<T> {
     protected boolean isRequired = false;
 
+    /**
+     * Помечает схему как обязательную.
+     * <p>
+     * Если метод переопределяется в подклассах, рекомендуется вызывать {@code super.required()}
+     * для обеспечения корректного поведения (например, установки флага {@code isRequired}).
+     *
+     * @return этот объект схемы с установленным флагом обязательности
+     */
     public BaseSchema<T> required() {
         isRequired = true;
         return this;
     }
 
-    public boolean isValid(Object value) {
+    public final boolean isValid(Object value) {
         if (value == null) {
             return !isRequired;
         }

@@ -6,22 +6,22 @@ public class MapSchema extends BaseSchema<Map> {
     private Integer minSize = 0;
     private Map<String, ? extends BaseSchema<?>> mapSchemas = null;
 
-    public MapSchema sizeof(int size) {
+    public final MapSchema sizeof(int size) {
         this.minSize = size;
         return this;
     }
 
-    public void shape(Map<String, ? extends BaseSchema<?>> schemas) {
+    public final void shape(Map<String, ? extends BaseSchema<?>> schemas) {
         this.mapSchemas = schemas;
     }
 
     @Override
-    protected Class<Map> getType() {
+    protected final Class<Map> getType() {
         return Map.class;
     }
 
     @Override
-    protected boolean validate(Map map) {
+    protected final boolean validate(Map map) {
         if (map.size() < minSize) {
             return false;
         }
