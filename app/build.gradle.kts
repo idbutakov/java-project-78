@@ -1,5 +1,4 @@
 plugins {
-    application
     checkstyle
     jacoco
 }
