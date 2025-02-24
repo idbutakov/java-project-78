@@ -3,17 +3,17 @@ package hexlet.code.schemas;
 public final class StringSchema extends BaseSchema<String> {
 
     @Override
-    public final StringSchema required() {
+    public StringSchema required() {
         addCheck("required", str -> str != null && !str.isEmpty());
         return this;
     }
 
-    public final StringSchema minLength(int length) {
+    public StringSchema minLength(int length) {
         addCheck("minLength", str -> str.length() >= length);
         return this;
     }
 
-    public final StringSchema contains(String substring) {
+    public StringSchema contains(String substring) {
         addCheck("contains", str -> str.contains(substring));
         return this;
     }
@@ -32,7 +32,8 @@ public final class StringSchema extends BaseSchema<String> {
      * </p>
      *
      * @param value the {@code String} value to validate.
-     * @return {@code true} if the string is valid based on the above rules or passes the base validations; {@code false} otherwise.
+     * @return {@code true} if the string is valid based on the above rules
+     * or passes the base validations; {@code false} otherwise.
      */
     @Override
     public boolean isValid(Object value) {
@@ -46,7 +47,7 @@ public final class StringSchema extends BaseSchema<String> {
     }
 
     @Override
-    protected final Class<String> getType() {
+    protected Class<String> getType() {
         return String.class;
     }
 }
