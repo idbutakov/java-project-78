@@ -3,23 +3,23 @@ package hexlet.code.schemas;
 public class NumberSchema extends BaseSchema<Integer> {
 
     @Override
-    public NumberSchema required() {
+    public final NumberSchema required() {
         super.required();
         return this;
     }
 
-    public NumberSchema positive() {
+    public final NumberSchema positive() {
         addCheck("positive", num -> num > 0);
         return this;
     }
 
-    public NumberSchema range(int a, int b) {
+    public final NumberSchema range(int a, int b) {
         addCheck("range", num -> num >= a && num <= b);
         return this;
     }
 
     @Override
-    protected Class<Integer> getType() {
+    protected final Class<Integer> getType() {
         return Integer.class;
     }
 }

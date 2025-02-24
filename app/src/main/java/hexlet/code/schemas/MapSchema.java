@@ -4,12 +4,12 @@ import java.util.Map;
 
 public class MapSchema extends BaseSchema<Map> {
 
-    public MapSchema sizeof(int size) {
+    public final MapSchema sizeof(int size) {
         addCheck("minSize", m -> m.size() >= size);
         return this;
     }
 
-    public MapSchema shape(Map<String, ? extends BaseSchema<?>> schemas) {
+    public final MapSchema shape(Map<String, ? extends BaseSchema<?>> schemas) {
         addCheck("shape", m -> {
             for (Map.Entry<String, ? extends BaseSchema<?>> entry : schemas.entrySet()) {
                 String key = entry.getKey();
@@ -24,7 +24,7 @@ public class MapSchema extends BaseSchema<Map> {
     }
 
     @Override
-    protected Class<Map> getType() {
+    protected final Class<Map> getType() {
         return Map.class;
     }
 }
